@@ -72,6 +72,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'fantasy_gambling_league.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
+    'fantasy_gambling_league.structure.apps.StructureConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

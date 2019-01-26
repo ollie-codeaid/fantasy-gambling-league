@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}All Seasons{% endblock %}
+
+{% block content %}
+<ul>
+    {% for season in object_list %}
+    <li><a href="{% url 'structure:detail-season' season.slug %}">{{ season.name }}</a></li>
+    {% endfor %}
+    <li><a href="{% url 'structure:create-season' %}">Create new season</a></li>
+</ul>
+{% endblock %}

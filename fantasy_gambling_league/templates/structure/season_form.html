@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{% if object %}
+{{ object.name }}
+{% else %}
+New Season
+{% endif %}
+{% endblock %}
+  
+
+{% block content %}
+  {% if object %}
+  <form class="form-horizontal" method="post" action="{% url 'structure:update-season' object.slug %}">
+  {% else %}
+  <form class="form-horizontal" method="post" action="{% url 'structure:create-season' %}">
+  {% endif %}
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="control-group">
+      <div class="controls">
+        {% if object %}
+        <button type="submit" class="btn">Update</button>
+        {% else %}
+        <button type="submit" class="btn">Create</button>
+        {% endif %}
+      </div>
+    </div>
+  </form>
+{% endblock %}
