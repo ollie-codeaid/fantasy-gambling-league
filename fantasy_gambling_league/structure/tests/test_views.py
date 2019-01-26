@@ -123,7 +123,7 @@ class TestUpdateSeasonView(TestCase):
         assert response.status_code == 302
         assert 'login' in response.url
 
-    def test_anonymous_user_redirected_on_post(self):
+    def test_non_commissioner_user_redirected_on_post(self):
         original_name = self.season.name
         original_weekly_allowance = self.season.weekly_allowance
 
@@ -157,7 +157,7 @@ class TestDeleteSeasonView(TestCase):
         assert 'login' in response.url
 
     def test_anonymous_user_redirected_on_post(self):
-        response = self.client.post(self.get_url(), data=self.test_data)
+        response = self.client.post(self.get_url())
 
         assert response.status_code == 302
         assert 'login' in response.url
@@ -179,7 +179,7 @@ class TestDeleteSeasonView(TestCase):
         assert response.status_code == 302
         assert 'login' in response.url
 
-    def test_anonymous_user_redirected_on_post(self):
+    def test_non_commissioner_user_redirected_on_post(self):
         user = UserFactory()
         self.client.force_login(user)
         response = self.client.post(self.get_url())
