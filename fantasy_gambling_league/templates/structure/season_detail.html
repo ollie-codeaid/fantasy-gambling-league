@@ -6,7 +6,8 @@
 <ul>
     <li>Weekly allowance: {{ object.weekly_allowance }}</li>
     <li>Commissioner: {{ object.commissioner }}</li>
-    {% if request.user is object.commissioner %}
+    {{ request.user }}
+    {% if request.user == object.commissioner %}
     <li><a href="{% url 'structure:update-season' object.slug %}">Update</a></li>
     {% endif %}
 </ul>

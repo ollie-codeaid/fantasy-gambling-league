@@ -28,4 +28,9 @@ New Season
       </div>
     </div>
   </form>
+  {% if object %}
+  <div>
+    <p><a href="{% url 'structure:delete-season' object.slug %}">Delete</a></p>
+  </div>
+  {% endif %}
 {% endblock %}
