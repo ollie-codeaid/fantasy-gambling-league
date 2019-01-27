@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{% if object %}
+Update Gameweek {{ object.number }}
+{% else %}
+New Gameweek
+{% endif %}
+{% endblock %}
+  
+
+{% block content %}
+  {% if object %}
+  <form 
+    class="form-horizontal"
+    method="post"
+    action="{% url 'structure:update-gameweek' season_slug=object.season.slug number=object.number %}">
+  {% else %}
+  <form 
+    class="form-horizontal" 
+    method="post" 
+    action="{% url 'structure:create-gameweek' season_slug=season_slug %}">
+  {% endif %}
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="control-group">
+      <div class="controls">
+        {% if object %}
+        <button type="submit" class="btn">Update</button>
+        {% else %}
+        <button type="submit" class="btn">Create</button>
+        {% endif %}
+      </div>
+    </div>
+  </form>
+  {% if object %}
+  <div>
+    <p><a href="{% url 'structure:delete-gameweek' season_slug=object.season.slug number=object.number %}">
+      Delete
+    </a></p>
+  </div>
+  {% endif %}
+{% endblock %}

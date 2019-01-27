@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Gameweek {{ object.number }}{% endblock %}
+
+{% block content %}
+<ul>
+    <li>Deadline: {{ object.deadline }}</li>
+    <li>Spiel: {{ object.spiel }}</li>
+    {% if request.user == object.season.commissioner %}
+    <li><a href="{% url 'structure:update-gameweek' season_slug=object.season.slug number=object.number %}">
+      Update
+    </a></li>
+    {% endif %}
+</ul>
+{% endblock %}

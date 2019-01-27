@@ -6,7 +6,16 @@
 <ul>
     <li>Weekly allowance: {{ object.weekly_allowance }}</li>
     <li>Commissioner: {{ object.commissioner }}</li>
-    {{ request.user }}
+    <li>
+      <ul>
+        {% for gameweek in object.gameweek_set.all %}
+        <li><a href="{% url 'structure:detail-gameweek' season_slug=object.slug number=gameweek.number %}">
+          Gameweek {{ gameweek.number }}
+        </a></li>
+        {% endfor %}
+	<li><a href="{% url 'structure:create-gameweek' season_slug=object.slug %}">Create Gameweek</a></li>
+      </ul>
+    </li>
     {% if request.user == object.commissioner %}
     <li><a href="{% url 'structure:update-season' object.slug %}">Update</a></li>
     {% endif %}

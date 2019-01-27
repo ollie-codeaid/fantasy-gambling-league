@@ -18,3 +18,12 @@ class Season(models.Model):
         max_digits=99
     )
 
+class Gameweek(models.Model):
+    season = models.ForeignKey(
+        Season,
+        on_delete=models.CASCADE,
+    )
+    number = models.IntegerField()
+    deadline = models.DateTimeField()
+    spiel = models.TextField(null=True, blank=True)
+

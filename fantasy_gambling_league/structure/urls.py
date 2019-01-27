@@ -19,5 +19,25 @@ urlpatterns = [
     path('season/detail/<slug:slug>/',
         views.SeasonDetailView.as_view(),
         name='detail-season',
-    )
+    ),
+    path(
+        'season/<slug:season_slug>/add_gameweek/',
+        views.GameweekCreateView.as_view(),
+        name='create-gameweek',
+    ),
+    path(
+        'season/<slug:season_slug>/update/<int:number>/',
+        views.GameweekUpdateView.as_view(),
+        name='update-gameweek',
+    ),
+    path(
+        'season/<slug:season_slug>/delete/<int:number>/',
+        views.GameweekDeleteView.as_view(),
+        name='delete-gameweek',
+    ),
+    path(
+        'season/<slug:season_slug>/detail/<int:number>/',
+        views.GameweekDetailView.as_view(),
+        name='detail-gameweek',
+    ),
 ]

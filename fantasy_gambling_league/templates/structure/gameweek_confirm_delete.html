@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Delete Gamweek {{ object.number }}
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <form method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Confirm delete?" />
+    </form>
+</div>
+{% endblock %}
